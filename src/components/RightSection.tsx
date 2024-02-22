@@ -6,6 +6,7 @@ import chatgptlogo2 from '@/assets/chatgptlogo2.png'
 import nouserlogo from '@/assets/nouserlogo.png'
 import Image from 'next/image'
 
+
 const openAiAPI = process.env.NEXT_PUBLIC_OPENAI_API_KEY
 
 const RightSection = () => {
@@ -15,7 +16,7 @@ const RightSection = () => {
 
     const sendMessage = async () => {
          console.log(message)
-        let url = "https://api.openai.com"
+        let url = "https://api.openai.com/v1/chat/completions"
 
         let token = `Bearer ${openAiAPI}`
         let model = 'gpt-3.5-turbo'
@@ -28,7 +29,7 @@ const RightSection = () => {
             }
         ]
 
-        let res = await fetch(url, {
+        let res = await fetch (url, {
             method: 'POST',
             headers: {
                 'Authorization': token,
